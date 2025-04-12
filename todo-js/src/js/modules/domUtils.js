@@ -1,18 +1,30 @@
 export const getDomElements = (
-  inputBoxContainer,
-  listOfTasksContainer,
-  addTaskBtnContainer
+  inputBoxContainer = null,
+  listOfTasksContainer = null,
+  addTaskBtnContainer = null
 ) => {
-  const inputBox = document.getElementById(inputBoxContainer);
-  const listContainer = document.getElementById(listOfTasksContainer);
-  const addTaskButton = document.getElementById(addTaskBtnContainer);
+  const elements = {};
 
-  if (!inputBox || !listContainer || !addTaskButton) {
-    throw new Error("One or more elements not found in the DOM.");
+  if (inputBoxContainer) {
+    elements.inputBox = document.getElementById(inputBoxContainer);
+    if (!elements.inputBox) {
+      console.warn(`Element with ID "${inputBoxContainer}" not found.`);
+    }
   }
-  return {
-    inputBox,
-    listContainer,
-    addTaskButton,
-  };
+
+  if (listOfTasksContainer) {
+    elements.listContainer = document.getElementById(listOfTasksContainer);
+    if (!elements.listContainer) {
+      console.warn(`Element with ID "${listOfTasksContainer}" not found.`);
+    }
+  }
+
+  if (addTaskBtnContainer) {
+    elements.addTaskButton = document.getElementById(addTaskBtnContainer);
+    if (!elements.addTaskButton) {
+      console.warn(`Element with ID "${addTaskBtnContainer}" not found.`);
+    }
+  }
+
+  return elements;
 };
