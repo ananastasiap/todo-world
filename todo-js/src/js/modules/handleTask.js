@@ -1,3 +1,4 @@
+import { saveData } from "./saveData";
 import { getDomElements } from "./domUtils";
 
 export const handleTask = function (listOfTasksContainer) {
@@ -13,9 +14,11 @@ export const handleTask = function (listOfTasksContainer) {
     if (event.target.tagName === "LI") {
       // If it's a list item, toggle the "checked" class
       event.target.classList.toggle("checked");
+      saveData(listOfTasksContainer);
     } else if (event.target.tagName === "SPAN") {
       // If it's a span, delete li element
       event.target.parentElement.remove();
+      saveData(listOfTasksContainer);
     }
   });
 };

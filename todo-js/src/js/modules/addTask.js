@@ -1,4 +1,5 @@
 import { getDomElements } from "./domUtils";
+import { saveData } from "./saveData";
 
 export const addTask = function (
   inputBoxContainer,
@@ -31,5 +32,6 @@ export const addTask = function (
     }
     // Clear the input box after adding the task
     inputBox.value = "";
+    saveData(listOfTasksContainer);
   });
 };
